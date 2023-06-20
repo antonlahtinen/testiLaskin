@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riskipistelaskin</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" type="text/css" href="./styles/style.css" />
+  </head>
+
+  <body onload="showPage('riskiLaskin');dropdownValinta();vaaraKayttoValinta()">
+    <header>
+      <nav>
+        <ul class="menu">
+          <li><a href="#" onclick="showPage('riskiLaskin')">Riskipistelaskin</a></li>
+          <li><a href="#" onclick="showPage('riskiLuokat')">Riskiluokat</a></li>
+          <li><a href="#" onclick="showPage('palauteLaatikko')">Anna palautetta</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="riskiLaskin" class="sivu-sisältö1">
+      <h1>Laskin lääkinnällisen laitteen käytön riskin arvioimiseksi - TESTIVERSIO</h1>
+
+      <p class="disclaimer">
+        Tämä laskin on suunniteltu arvioimaan yksittäisen lääkinnällisen
+        laitteen käytön riskiä. Laskimen tarkoituksena on auttaa lääkinnällisten
+        laitteiden osaamiskokonaisuuden rakentamista käytön riskin perusteella.
+        <br /><br />
+        Laskin on syntynyt osana Virtual Platform For Medical Device Training -hanketta
+        yhteistyössä TAMKin tietotekniikan opiskelijoiden kanssa.
+        Kyseessä on testiversio, jonka osuvuudesta tai käyttökelpoisuudesta ei ole näyttöä.
+        Sisältö on pyritty tekemään parhaan saatavilla olevan tiedon mukaan,
+        mutta tekijät eivät ota vastuuta mahdollisista laskimen perusteella tehtävistä johtopäätöksistä.
+        <br />
+        Tekijät pidättävät kaikki oikeudet
+        verkkosivujen kaikkeen sisältöön. Sivuston sisällön kopioiminen,
+        levittäminen, muokkaaminen ja käyttö ilman hankkeelta saatua kirjallista
+        lupaa on kielletty. Laskimen käytön tai annettavan palautteen mukana ei
+        siirry yksilöiviä henkilötietoja.
+      </p>
+
+      <p class="instructions">
+        Ohje laskimen käyttöön:
+        <ol class="instructions-list">
+          <li>Valitse laite, jonka käytön riskiä haluat arvioida omien työtehtäviesi kannalta.</li>
+          <li>Pohdi tavanomaista laitteen käytön tilannetta työssäsi. Vastaa kysymyksiin valitsemalla soveltuvin vaihtoehto.</li>
+          <li>Paina sen jälkeen "Laske riskipisteet" -nappia. Näyttöön avautuu sivusto, jossa esitetään laitteen riskipisteet, riskiluokka, sekä näihin perustuvat suositellut koulutus- ja perehdytysmenetelmät.</li>
+          <li>Koulutusmenetelmiä ja näytön muotoja voi yhdistellä oman organisaation / työpisteen käytännön mukaisesti.</li>
+        </ol>
+      </p>
+      <!--Kysymykset-->
+      <form id="kysymysPatteri">
+
+        <h2>Kysymys 1: Henkilön rooli laitteen käytössä <div class="info-logo">&#9432;
+          <span class="tooltip-teksti" id="tooltip-oikea">Maallikkokäyttäjällä tarkoitetaan potilasta, asiakasta, omaista</span>
+        </div></h2>
+
+
+
+        <label for="k1-vaihtoehto1">
+          <input type="radio" name="k1" value="5" id="k1-vaihtoehto1" />
+          Käyttäjä hoidon yhteydessä tai diagnostisen tutkimuksen yhteydessä
+        </label>
+        <label for="k1-vaihtoehto2">
+          <input type="radio" name="k1" value="5" id="k1-vaihtoehto2" />
+          Käyttökuntoon saattaja
+        </label>
+        <label for="k1-vaihtoehto3">
+          <input type="radio" name="k1" value="2" id="k1-vaihtoehto3" />
+          Puhdistaja
+        </label>
+        <label for="k1-vaihtoehto4">
+          <input type="radio" name="k1" value="3" id="k1-vaihtoehto4" />
+          Maallikkokäyttäjä
+        </label>
+
+        <h2>Kysymys 2: Laiteryhmä</h2>
+        <label for="k2-vaihtoehto1">
+          <input type="radio" name="k2" value="2" id="k2-vaihtoehto1" />
+          Kehon ulkopuolinen laite tai apuväline
+        </label>
+        <label for="k2-vaihtoehto2">
+          <input type="radio" name="k2" value="1" id="k2-vaihtoehto2" />
+          Ihoa läpäisemätön hoitotarvike
+        </label>
+        <label for="k2-vaihtoehto3">
+          <input type="radio" name="k2" value="5" id="k2-vaihtoehto3" />
+          Istute
+        </label>
+        <label for="k2-vaihtoehto4">
+          <input type="radio" name="k2" value="5" id="k2-vaihtoehto4" />
+          Ihon läpäisevä hoitotarvike
+        </label>
+        <label for="k2-vaihtoehto5">
+          <input type="radio" name="k2" value="4" id="k2-vaihtoehto5" />
+          Puhdistukseen, desinfiointiin, sterilointiin liittyvä laite
+        </label>
+        <label for="k2-vaihtoehto6">
+          <input type="radio" name="k2" value="3" id="k2-vaihtoehto6" />
+          Diagnostiikkalaite
+        </label>
+        <label for="k2-vaihtoehto7">
+          <input type="radio" name="k2" value="4" id="k2-vaihtoehto7" />
+          Ohjelmisto
+        </label>
+        <label for="k2-vaihtoehto8">
+          <input type="radio" name="k2" value="3" id="k2-vaihtoehto8" />
+          Muu
+        </label>
+
+        <h2>Kysymys 3: Laitteen käyttöympäristö</h2>
+        <label for="k3-vaihtoehto1">
+          <input type="radio" name="k3" value="5" id="k3-vaihtoehto1" />
+          Koti
+        </label>
+        <label for="k3-vaihtoehto2">
+          <input type="radio" name="k3" value="4" id="k3-vaihtoehto2" />
+          Sosiaalihuolto
+        </label>
+        <label for="k3-vaihtoehto3">
+          <input type="radio" name="k3" value="2" id="k3-vaihtoehto3" />
+          Terveydenhuolto
+        </label>
+        <label for="k3-vaihtoehto4">
+          <input type="radio" name="k3" value="3" id="k3-vaihtoehto4" />
+          Ensihoito
+        </label>
+
+        <h2>Kysymys 4: Laitteen käyttötilanne <div class="info-logo">&#9432;
+          <span class="tooltip-teksti" id="tooltip-oikea">Vertaistiimissä on useampi saman ammattinimikkeen edustaja, esim. kaksi sairaanhoitajaa;
+            Moniammatillisessa tiimissa on eri ammattinimikkeen edustajia, esim. sairaanhoitaja ja lääkäri</span>
+        </div></h2>
+
+        <label for="k4-vaihtoehto1">
+          <input type="radio" name="k4" value="5" id="k4-vaihtoehto1" />
+          Yksin
+        </label>
+        <label for="k4-vaihtoehto2">
+          <input type="radio" name="k4" value="3" id="k4-vaihtoehto2" />
+          Osana vertaistiimiä
+        </label>
+        <label for="k4-vaihtoehto3">
+          <input type="radio" name="k4" value="2" id="k4-vaihtoehto3" />
+          Osana moniammatillista tiimiä
+        </label>
+
+        <h2>Kysymys 5: Laitteen käyttötaajuus</h2>
+        <label for="k5-vaihtoehto1">
+          <input type="radio" name="k5" value="1" id="k5-vaihtoehto1" />
+          Päivittäin / viikottain
+        </label>
+        <label for="k5-vaihtoehto2">
+          <input type="radio" name="k5" value="3" id="k5-vaihtoehto2" />
+          Yli 1 kertaa kuukaudessa
+        </label>
+        <label for="k5-vaihtoehto3">
+          <input type="radio" name="k5" value="4" id="k5-vaihtoehto3" />
+          Yli 1 kertaa vuodessa
+        </label>
+        <label for="k5-vaihtoehto4">
+          <input type="radio" name="k5" value="5" id="k5-vaihtoehto4" />
+          Harvemmin kuin kerran vuodessa
+        </label>
+
+        <h2>Kysymys 6: Virheellisen käytön todennäköisin seuraus potilaalle</h2>
+        <label for="k6-vaihtoehto1">
+          <input type="radio" name="k6" value="5" id="k6-vaihtoehto1" />
+          Välitön kuolema, elvytys
+        </label>
+        <label for="k6-vaihtoehto2">
+          <input type="radio" name="k6" value="5" id="k6-vaihtoehto2" />
+          Välitön verenkierron tai hengityksen haitta
+        </label>
+        <label for="k6-vaihtoehto3">
+          <input type="radio" name="k6" value="5" id="k6-vaihtoehto3" />
+          Palovamma, sähköisku, ylimääräinen sädeannos
+        </label>
+        <label for="k6-vaihtoehto4">
+          <input type="radio" name="k6" value="5" id="k6-vaihtoehto4" />
+          Puristuminen, ruhjevamma
+        </label>
+        <label for="k6-vaihtoehto5">
+          <input type="radio" name="k6" value="3" id="k6-vaihtoehto5" />
+          Putoaminen, kaatuminen
+        </label>
+        <label for="k6-vaihtoehto6">
+          <input type="radio" name="k6" value="5" id="k6-vaihtoehto6" />
+          Hoitoratkaisu väärien tietojen perusteella
+        </label>
+        <label for="k6-vaihtoehto7">
+          <input type="radio" name="k6" value="4" id="k6-vaihtoehto7" />
+          Tarvittavan hoitotoimenpiteen viivästyminen
+        </label>
+        <label for="k6-vaihtoehto8">
+          <input type="radio" name="k6" value="3" id="k6-vaihtoehto8" />
+          Viiveellä ilmaantuva haitta, esim. infektio, painevaurio
+        </label>
+        <label for="k6-vaihtoehto9">
+          <input type="radio" name="k6" value="2" id="k6-vaihtoehto9" />
+          Muu
+        </label>
+
+        <h2>Kysymys 7: Käyttötarkoitus <div class="info-logo">&#9432;
+          <span class="tooltip-teksti" id="tooltip-oikea">Luonnollisella reitillä tarkoitetaan suun, ehjän ihon / sidekalvon tai
+            peräaukon kautta annettavia valmisteita; Henkilön siirtämiseen sisältyy myös paikalla nostaminen; diagnostiikka sisältää kuvantamisen,
+            toiminnalliset tutkimukset, laboratoriotutkimukset ja vieritutkimukset</span>
+        </div></h2>
+
+        <label for="k7-vaihtoehto1">
+          <input type="radio" name="k7" value="5" id="k7-vaihtoehto1" />
+          Lääkkeen / liuosten annostelu muuta kuin luonnollista reittiä
+        </label>
+        <label for="k7-vaihtoehto2">
+          <input type="radio" name="k7" value="3" id="k7-vaihtoehto2" />
+          Lääkkeen / liuosten annostelu luonnollista reittiä
+        </label>
+        <label for="k7-vaihtoehto3">
+          <input type="radio" name="k7" value="5" id="k7-vaihtoehto3" />
+          Sydämen toiminnan ylläpitäminen tai palauttaminen
+        </label>
+        <label for="k7-vaihtoehto4">
+          <input type="radio" name="k7" value="2" id="k7-vaihtoehto4" />
+          Elintoimintojen monitorointi tai mittaaminen
+        </label>
+        <label for="k7-vaihtoehto5">
+          <input type="radio" name="k7" value="5" id="k7-vaihtoehto5" />
+          Hengitysteiden puhdistaminen tai hengityksen tukeminen
+        </label>
+        <label for="k7-vaihtoehto6">
+          <input type="radio" name="k7" value="3" id="k7-vaihtoehto6" />
+          Henkilön siirtäminen
+        </label>
+        <label for="k7-vaihtoehto7">
+          <input type="radio" name="k7" value="3" id="k7-vaihtoehto7" />
+          Diagnostiikka
+        </label>
+        <label for="k7-vaihtoehto8">
+          <input type="radio" name="k7" value="2" id="k7-vaihtoehto8" />
+          Muu
+        </label>
+
+        <h2>Kysymys 8: Varalaite saatavilla 24/7</h2>
+        <label for="k8-vaihtoehto1">
+          <input type="radio" name="k8" value="0" id="k8-vaihtoehto1" />
+          Kyllä
+        </label>
+        <label for="k8-vaihtoehto2">
+          <input type="radio" name="k8" value="5" id="k8-vaihtoehto2" />
+          Ei
+        </label>
+
+        <h2>Kysymys 9: Asiakkaan/potilaan kunto</h2>
+        <label for="k9-vaihtoehto1">
+          <input type="radio" name="k9" value="5" id="k9-vaihtoehto1" />
+          Täysin autettava kaikissa päivittäistoiminnoissa
+        </label>
+        <label for="k9-vaihtoehto2">
+          <input type="radio" name="k9" value="5" id="k9-vaihtoehto2" />
+          Kriittisten elintoimintojen jatkuva / säännöllisesti toistuva tuki käytössä
+        </label>
+        <label for="k9-vaihtoehto3">
+          <input type="radio" name="k9" value="5" id="k9-vaihtoehto3" />
+          Alentunut tajunnan taso
+        </label>
+        <label for="k9-vaihtoehto4">
+          <input type="radio" name="k9" value="3" id="k9-vaihtoehto4" />
+          Suorituskykyä rajoittava sairaus tai oire
+        </label>
+        <label for="k9-vaihtoehto5">
+          <input type="radio" name="k9" value="0" id="k9-vaihtoehto5" />
+          Normaali suorituskyky
+        </label>
+
+        <h2>Kysymys 10: Ohjeet saatavilla 24/7</h2>
+        <label for="k10-vaihtoehto1">
+          <input type="radio" name="k10" value="0" id="k10-vaihtoehto1" />
+          Kyllä
+        </label>
+        <label for="k10-vaihtoehto2">
+          <input type="radio" name="k10" value="5" id="k10-vaihtoehto2" />
+          Ei
+        </label>
+
+        <br />
+
+        <div class="formNappulat">
+          <button type="submit" onclick="showPage('lasketutPisteet')">
+            Laske riskipisteet
+          </button>
+
+          <button id="poistaValinnat" onclick="tyhjennä()">
+            Tyhjennä valinnat
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!--PALAUTELAATIKKO-->
+    <div id="palauteLaatikko" class="sivu-sisältö">
+      <h1>Palautelaatikko poissa käytöstä</h1>
+    </div>
+
+
+
+    <!--RISKILUOKAT-SIVU-->
+    <div style="width: 850px;" id="riskiLuokat" class="sivu-sisältö">
+      <h2>Riskiluokitukset ja niiden suositellut toimintaohjeet</h2>
+
+      <br />
+      <label for="taajuusValinta">Valitse laitteen käyttötaajuus:</label>
+
+      <select
+        name="taajuusValinta"
+        id="taajuusValinta"
+        onchange="dropdownValinta()"
+      >
+        <option value="1">Päivittäin</option>
+        <option value="2">Yli 1 kertaa kuukaudessa</option>
+        <option value="3">Yli 1 kertaa vuodessa</option>
+        <option value="4">Harvemmin kuin kerran vuodessa</option>
+      </select>
+      <p></p>
+      <label for="vääräKäyttöValinta">Valitse virheellisen käytön seurauksesta saadut pisteet:</label>
+
+      <select
+        name="vääräKäyttöValinta"
+        id="vääräKäyttöValinta"
+        onchange="vaaraKayttoValinta()"
+      >
+        <option value="1">2-4</option>
+        <option value="2">5</option>
+
+      </select>
+      <p></p>
+      <br />
+
+      <table class="ohjeTaulu">
+        <tr>
+          <th class="riskiEka">Laitteessa matala käyttöriski</th>
+        </tr>
+        <tr>
+          <th class="riskiEka">Laitteelle soveltuvia koulutus- ja perehdytysmenetelmiä ovat</th>
+        </tr>
+        <tr>
+          <td>
+            Käyttöohjeeseen ja valmistajan muuhun materiaaliin tutustuminen
+          </td>
+        </tr>
+        <tr>
+          <td>Perustutkintoon liittyvä koulutus</td>
+        </tr>
+        <tr>
+          <td>Valmistajan käyttökoulutus tai Teemapäivä</td>
+        </tr>
+        <tr>
+          <th class="riskiEka">Laitteen käytön osaamisen varmistamiseen soveltuvia näyttömenetelmiä ovat</th>
+        </tr>
+        <tr>
+          <td>Itsearviointi</td>
+        </tr>
+        <tr>
+          <td>Itsearviointi</td>
+        </tr>
+        <tr>
+          <td>Osallistumismerkintä</td>
+        </tr>
+        <tr>
+          <th class="riskiEka">Laitteen koulutuksen / osaamisen varmistamiseen soveltuva toistotaajuus on</th>
+        </tr>
+        <tr>
+          <td>Tarvittaessa esim. muutostilanteissa</td>
+        </tr>
+        <tr>
+          <th class="riskiToka">Laitteessa kohtalainen käyttöriski</th>
+        </tr>
+        <tr>
+          <th class="riskiToka">Laitteelle soveltuvia koulutus- ja perehdytysmenetelmiä ovat</th>
+        </tr>
+        <tr>
+          <td>
+            Käyttöohjeeseen ja valmistajan muuhun materiaaliin tutustuminen
+          </td>
+        </tr>
+        <tr>
+          <td>Verkkokurssi</td>
+        </tr>
+        <tr>
+          <td>Valmistajan käyttökoulutus tai Teemapäivä</td>
+        </tr>
+
+        <tr>
+          <th class="riskiToka">Laitteen käytön osaamisen varmistamiseen soveltuvia näyttömenetelmiä ovat</th>
+        </tr>
+        <tr>
+          <td>Itsearviointi</td>
+        </tr>
+        <tr>
+          <td>Verkkotentti</td>
+        </tr>
+        <tr>
+          <td>Osallistumismerkintä</td>
+        </tr>
+
+        <tr>
+          <th class="riskiToka">Laitteen koulutuksen / osaamisen varmistamiseen soveltuva toistotaajuus on</th>
+        </tr>
+        <tr>
+          <td class="luokka2">Riippuu laitteen käyttötaajuudesta</td>
+        </tr>
+      </table>
+      <br />
+      <table class="tableKolmas">
+        <tr>
+          <th class="riskiKolmas">Laitteessa korkea käyttöriski</th>
+        </tr>
+
+      <table class="koulutusKolmas">
+
+      </table>
+      <table>
+        <tr>
+          <th class="riskiKolmas">Laitteen koulutuksen / osaamisen varmistamiseen soveltuva toistotaajuus on</th>
+        </tr>
+        <tr>
+          <td class="luokka3">Riippuu</td>
+        </tr>
+      </table>
+    </table>
+    <br />
+      <table>
+        <tr>
+          <th class="riskiNeljäs">Laitteessa erittäin korkea käyttöriski</th>
+        </tr>
+        <tr>
+          <th class="riskiNeljäs">Laitteelle soveltuvia koulutus- ja perehdytysmenetelmiä ovat</th>
+        </tr>
+        <tr>
+          <td>Teoriakoulutus ja käytännön harjoittelu</td>
+        </tr>
+        <tr>
+          <th class="riskiNeljäs">Laitteen käytön osaamisen varmistamiseen soveltuvia näyttömenetelmiä ovat</th>
+        </tr>
+        <tr>
+          <td>Suoritus käytännössä / simulaatiossa</td>
+        </tr>
+        <tr>
+          <th class="riskiNeljäs">Laitteen koulutuksen / osaamisen varmistamiseen soveltuva toistotaajuus on</th>
+        </tr>
+        <tr>
+          <td id="luokka4">Riippuu laitteen käyttötaajuudesta</td>
+        </tr>
+      </table>
+    </div>
+
+    <!--TULOKSET-->
+    <div id="lasketutPisteet" class="sivu-sisältö">
+      <h2>
+        Laskennan tulos ja riskiluokan mukaiset suositukset osaamisen
+        varmistamisessa
+      </h2>
+
+      <br />
+
+      <p>
+        Lääkinnällisen laitteen käytön riskin kokonaispisteet:
+        <span id="kokonaisPisteet">0</span>
+      </p>
+
+      <p>
+        Lääkinnällisen laitteen käytön riskiluokka:
+        <span id="riskiLuokka">0</span>
+      </p>
+      <p><span id="riskiLuokkaTeksti"></span></p>
+      <p>
+        Suositukset soveltuvista koulutus- ja näyttömenetelmistä, joista voi
+        valita omassa toimintaympäristössä käyttökelpoisimman menetelmän.
+      </p>
+      <br />
+      <table id="ohjePöytä"></table>
+
+      <button onclick="showPage('riskiLaskin')">Takaisin laskimeen</button>
+    </div>
+
+    <footer class="site-footer">
+      <p class="footerText">
+        Sivuston toteutus: Anton Lahtinen, Jeremi Rannikko, Timo Siuruainen -
+        TAMK 2023
+      </p>
+    </footer>
+
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>

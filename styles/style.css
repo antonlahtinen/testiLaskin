@@ -1,0 +1,230 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100%;
+}
+
+h1 {
+  font-size: 36px;
+  text-align: center;
+  margin: 30px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 24px;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+form {
+  margin: 0 auto;
+  max-width: 850px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+
+}
+
+.sivu-sisältö {
+  margin: 0 auto;
+  max-width: 1080px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+button {
+  display: block;
+  margin: 30px auto 0;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+#kokonaisPisteet,
+#riskiLuokka {
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+#poistaValinnat:hover {
+  background-color: red;
+}
+
+.formNappulat {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+header,
+footer {
+  background-color: #333;
+
+}
+
+.disclaimer, .instructions {
+
+  margin: 0 auto;
+  max-width: 850px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+nav ul.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul.menu li {
+  display: inline-block;
+}
+
+nav ul.menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul.menu li:hover>a {
+  background-color: #555;
+}
+
+nav ul.menu li:hover .submenu {
+  display: block;
+}
+
+nav ul.menu .submenu {
+  display: none;
+  position: absolute;
+  background-color: #333;
+}
+
+nav ul.menu .submenu li {
+  display: block;
+}
+
+nav ul.menu .submenu li a {
+  padding: 10px 20px;
+}
+
+
+.site-footer {
+  margin-top: auto;
+  color: white;
+  text-align: center;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.riskiEka {
+  background-color: #92d050;
+}
+
+.riskiToka {
+  background-color: #ffff00;
+}
+
+.riskiKolmas {
+  background-color: #ffd966;
+}
+
+.riskiNeljäs {
+  background-color: #f03c3c;
+}
+
+.instructions-list {
+  list-style-position: inside;
+  margin: 0 auto;
+  max-width: 850px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.tooltip-teksti {
+  visibility: hidden;
+  position: absolute;
+  z-index: 2;
+  width: 250px;
+  color: white;
+  font-size: 18px;
+  background-color: #192733;
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.tooltip-teksti::before {
+  content: "";
+  position: absolute;
+  transform: rotate(45deg);
+  background-color: #192733;
+  padding: 5px;
+  z-index: 1;
+}
+
+.info-logo:hover .tooltip-teksti {
+  visibility: visible;
+}
+
+#tooltip-oikea {
+  top: -29px;
+  left: 130%;
+}
+
+#tooltip-oikea::before {
+  top: 1%;
+
+}
+
+.info-logo {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
